@@ -33,7 +33,7 @@ group :doc do
 end
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -51,6 +51,7 @@ group :development, :test do
 # sets rails console to open in pry instead of irb
 # https://github.com/rweng/pry-rails
   gem 'pry-rails'
+  gem 'valid_attribute'
 # command line tool. run `$ annotate`. annotates models with schema data
 # https://github.com/ctran/annotate_models
   gem 'annotate'

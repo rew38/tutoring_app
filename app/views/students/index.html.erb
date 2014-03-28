@@ -1,0 +1,11 @@
+<!-- students.index.html.erb -->
+
+<%= link_to "Home", root_path %>
+<h1>All Registered Students</h1>
+
+<ul>
+<% @students.each do |student| %>
+  <li><%= student.first_name%></li>
+  <li><%= student.last_name%></li>
+<% end %>
+</ul>

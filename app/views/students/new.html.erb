@@ -1,0 +1,25 @@
+<!-- student.new.html.erb -->
+
+<h2>Student </h2>
+<h4>Registration </h4>
+
+<%= form_for(@student) do |f| %>
+  <%= f.label(:first_name) %>
+  <%= f.text_field(:first_name) %>
+  <%= f.label(:last_name) %>
+  <%= f.text_field(:last_name) %>
+  <%= f.label(:email) %>
+  <%= f.text_field(:email) %>
+  <%= f.label(:phone_number) %>
+  <%= f.text_field(:phone_number) %>
+  <%= f.label(:students_school) %>
+  <%= f.text_field(:students_school) %>
+  <%= f.label(:class_of) %>
+  <%= f.text_field(:class_of) %>
+  <!-- these input controls will obscure the password -->
+  <%= f.label(:password) %>
+  <%= f.password_field(:password) %>
+  <%= f.label(:password_confirmation) %>
+  <%= f.password_field(:password_confirmation) %>
+  <%= f.submit %>
+<% end %>

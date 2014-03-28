@@ -1,0 +1,23 @@
+<!-- tutors.new.html.erb -->
+
+<h2>Tutor </h2>
+<h4>Registration </h4>
+
+<%= form_for(@tutor) do |f| %>
+  <%= f.label(:first_name) %>
+  <%= f.text_field(:first_name) %>
+  <%= f.label(:last_name) %>
+  <%= f.text_field(:last_name) %>
+  <%= f.label(:email) %>
+  <%= f.text_field(:email) %>
+  <%= f.label(:phone_number) %>
+  <%= f.text_field(:phone_number) %>
+  <%= f.label(:hometown) %>
+  <%= f.text_field(:hometown) %>
+  <!-- these input controls will obscure the password -->
+  <%= f.label(:password) %>
+  <%= f.password_field(:password) %>
+  <%= f.label(:password_confirmation) %>
+  <%= f.password_field(:password_confirmation) %>
+  <%= f.submit %>
+<% end %>
