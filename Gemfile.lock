@@ -138,7 +138,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotate
+  annotate (>= 2.6.0)
   bcrypt (~> 3.1.7)
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)

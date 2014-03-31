@@ -54,8 +54,12 @@ group :development, :test do
   gem 'valid_attribute'
 # command line tool. run `$ annotate`. annotates models with schema data
 # https://github.com/ctran/annotate_models
-  gem 'annotate'
 # one liners to test common rails functionality
 # https://github.com/thoughtbot/shoulda-matchers
   gem 'shoulda-matchers'
+end
+
+
+group :development do
+  gem 'annotate', ">=2.6.0"
 end
