@@ -7,6 +7,7 @@ TutoringApp::Application.routes.draw do
 
   resources :students
   resources :tutors
+  resources :users
 
   # just the three routes we need
   get  "/session/new"  => "session#new"

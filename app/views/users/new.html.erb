@@ -1,9 +1,11 @@
-<!-- student.edit.html.erb -->
+users.new.html.erb
 
-<h2>Edit Student Profile</h2>
-<%= link_to "Back", students_path %>
+<h2>USER </h2>
+<h4>Registration </h4>
+<%= link_to "Back", root_path %>
 
-
+<br>
+<br>
 <%= form_for(@user) do |f| %>
   <%= f.label(:name) %>
   <%= f.text_field(:name) %>
@@ -11,17 +13,12 @@
   <%= f.text_field(:email) %>
   <%= f.label(:phone_number) %>
   <%= f.text_field(:phone_number) %>
-  <%= f.fields_for :student, @student.build_student do |s| %>
-    <%= s.label :students_school%>
-    <%= s.text_field (:students_school) %>
-    <%= s.label :class_of %>
-    <%= s.text_field (:class_of) %>
-  <% end %>
-
+  <%= f.label(:account_type) %>
+  <%= f.text_field(:account_type) %>
+<br>
   <%= f.label(:password) %>
   <%= f.password_field(:password) %>
   <%= f.label(:password_confirmation) %>
   <%= f.password_field(:password_confirmation) %>
   <%= f.submit %>
 <% end %>
-

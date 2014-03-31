@@ -15,7 +15,14 @@
 
 
   <% else %>
-    <%= link_to "Home", root_path %>
+
+<% if student_logged_in? %>
+  <%= link_to "Back", students_path %>
+ <% else %>
+  <%= link_to "Home", root_path %>
+<% end %>
+<br>
+
 
     <ul>
     <% @tutors.each do |tutor| %>

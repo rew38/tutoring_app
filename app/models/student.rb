@@ -1,6 +1,6 @@
 # student.rb
 # app/models/student.rb
-class Student < User
-  has_one :student_profile
-  accepts_nested_attributes_for :student_profile
+class Student < ActiveRecord::Base
+  belongs_to :user
+  # accepts_nested_attributes_for :student_proefile
 end

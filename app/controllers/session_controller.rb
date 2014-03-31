@@ -8,10 +8,12 @@ class SessionController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:success] = "Thanks for loggin in!"
-      if user.is_a?(Student)
-       redirect_to students_path
-      elsif user.is_a?(Tutor)
+      if user
+        redirect_to users_path
+      elsif user.account_type = "tutor"      #.is_a?(Tutor)
         redirect_to tutors_path
+      elsif user.account_type = "student" #is_a?(Student)
+       redirect_to students_path
       else
         redirect_to "/"
       end

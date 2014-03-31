@@ -1,7 +1,7 @@
 # tutor.rb
 # app/models/tutor.rb
-class Tutor < User
-  has_one :tutor_profile
-  accepts_nested_attributes_for :tutor_profile
+class Tutor < ActiveRecord::Base
+  belongs_to :user
+  # accepts_nested_attributes_for :tutor_profile
 
 end

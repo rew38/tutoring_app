@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
-  include ActiveModel::SecurePassword
+  has_one :student
+  has_one :tutor
   has_secure_password
+
 end

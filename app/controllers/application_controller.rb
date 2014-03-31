@@ -16,6 +16,11 @@ class ApplicationController < ActionController::Base
     end
     helper_method :current_tutor
 
+    def current_user
+       @user_user ||= User.find_by(id: session[:user_id])
+    end
+    helper_method :current_user
+
     def student_logged_in?
       current_student.present?
     end
@@ -24,15 +29,24 @@ class ApplicationController < ActionController::Base
       current_tutor.present?
     end
 
+    def user_logged_in?
+      current_user.present?
+    end
+
+
+
     def render_layout
       if current_student
         "student"
       elsif current_tutor
         "tutor"
+      elsif current_user
+        "user"
       end
     end
 
   helper_method :student_logged_in?
   helper_method :tutor_logged_in?
+  helper_method :user_logged_in?
 
 end
