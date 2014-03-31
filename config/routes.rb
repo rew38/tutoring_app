@@ -7,9 +7,8 @@ TutoringApp::Application.routes.draw do
 
   resources :students
   resources :tutors
-  resources :appointments
 
-  # need routes for tutor and student logins
+  # just the three routes we need
   get  "/session/new"  => "session#new"
   post "/session"      => "session#create"
   get  "/logout"       => "session#destroy"

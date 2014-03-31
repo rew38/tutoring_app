@@ -1,11 +1,30 @@
 <!-- students.index.html.erb -->
 
-<%= link_to "Home", root_path %>
-<h1>All Registered Students</h1>
 
-<ul>
-<% @students.each do |student| %>
-  <li><%= student.first_name%></li>
-  <li><%= student.last_name%></li>
-<% end %>
-</ul>
+
+<% if student_logged_in? %>
+
+  <h1>Welcome <%= current_student.name.capitalize %></h1>
+    <%= link_to "Home", root_path %>
+<br>
+<br>
+
+    <%= link_to "Edit Student Profile", edit_student_path(current_student) %>
+<br>
+      <%= link_to "View Student Profile", student_path(current_student) %>
+<br>
+      <%= link_to "Delete my Account", student_path(current_student), method: :delete, confirm: "Are you sure?" %>
+
+
+    <% else %>
+    <%= link_to "Home", root_path %>
+
+    <ul>
+      <% @students.each do |student| %>
+        <li><br><strong>Name:</strong> <%= student.name%>, <strong>Email:</strong> <%= student.email %>, <strong>Phone:</strong> <%= student.phone_number %></li>
+      <% end %>
+    </ul>
+
+
+  <% end %>
+

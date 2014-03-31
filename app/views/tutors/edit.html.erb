@@ -1,23 +1,20 @@
-<!-- student.new.html.erb -->
+<!-- tutors.edit.html.erb
+ -->
 
-<h2>Student </h2>
-<h4>Registration </h4>
-<%= link_to "Back", root_path %>
-
-<br>
-<br>
-<%= form_for(@student) do |f| %>
+ <%= form_for(@tutor) do |f| %>
   <%= f.label(:name) %>
   <%= f.text_field(:name) %>
   <%= f.label(:email) %>
   <%= f.text_field(:email) %>
   <%= f.label(:phone_number) %>
   <%= f.text_field(:phone_number) %>
-  <%= f.fields_for :student_profile, @student.build_student_profile do |s| %>
-    <%= s.label :students_school%>
-    <%= s.text_field :students_school %>
-    <%= s.label :class_of %>
-    <%= s.text_field :class_of %>
+  <%= f.fields_for :tutor_profile, @tutor.build_tutor_profile do |s| %>
+    <%= s.label :hometown %>
+    <%= s.text_field :hometown %>
+    <%= s.label :tutors_school %>
+    <%= s.text_field :tutors_school %>
+    <%= s.label :tutors_course %>
+    <%= s.text_field :tutors_course %>
   <% end %>
 
   <%= f.label(:password) %>
@@ -26,5 +23,3 @@
   <%= f.password_field(:password_confirmation) %>
   <%= f.submit %>
 <% end %>
-
-

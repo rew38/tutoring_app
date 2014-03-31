@@ -33,20 +33,23 @@ class TutorsController < ApplicationController
     end
   end
 
+  def show
+    @tutor = Tutor.find(params[:id])
+    @tutor_profile  = @tutor.tutor_profile
+  end
+
+  def destroy
+    @tutor = Tutor.find(params[:id])
+    @tutor.destroy
+    session[:user_id] = nil
+    redirect_to root_path
+  end
+
 
   private
 
   def tutor_params
-    params.require(:tutor).permit(
-      :first_name,
-      :last_name,
-      :email,
-      :phone_number,
-      :hometown,
-
-      :password,
-      :password_confirmation
-    )
+    params[:tutor].permit(:name, :email, :phone_number, :password, :password_confirmation, :tutor_profile_attributes => [:hometown, :tutors_school, :tutors_course])
   end
 
 end

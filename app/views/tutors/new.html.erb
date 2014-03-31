@@ -2,19 +2,27 @@
 
 <h2>Tutor </h2>
 <h4>Registration </h4>
+<%= link_to "Back", root_path %>
+
+<br>
+<br>
 
 <%= form_for(@tutor) do |f| %>
-  <%= f.label(:first_name) %>
-  <%= f.text_field(:first_name) %>
-  <%= f.label(:last_name) %>
-  <%= f.text_field(:last_name) %>
+  <%= f.label(:name) %>
+  <%= f.text_field(:name) %>
   <%= f.label(:email) %>
   <%= f.text_field(:email) %>
   <%= f.label(:phone_number) %>
   <%= f.text_field(:phone_number) %>
-  <%= f.label(:hometown) %>
-  <%= f.text_field(:hometown) %>
-  <!-- these input controls will obscure the password -->
+  <%= f.fields_for :tutor_profile, @tutor.build_tutor_profile do |s| %>
+    <%= s.label :hometown %>
+    <%= s.text_field :hometown %>
+    <%= s.label :tutors_school %>
+    <%= s.text_field :tutors_school %>
+    <%= s.label :tutors_course %>
+    <%= s.text_field :tutors_course %>
+  <% end %>
+
   <%= f.label(:password) %>
   <%= f.password_field(:password) %>
   <%= f.label(:password_confirmation) %>

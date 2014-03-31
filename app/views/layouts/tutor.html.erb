@@ -1,13 +1,16 @@
+<!-- layouts.tutor.html.erb -->
+
 <!DOCTYPE html>
 <html>
 <head>
   <title>TutoringApp</title>
-
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<h1>Tutor Layout</h1>
+<a href="/logout"> Logout</a>
 
 <%= yield %>
 
