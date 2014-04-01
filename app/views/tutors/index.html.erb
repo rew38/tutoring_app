@@ -19,7 +19,9 @@
 
     <ul>
     <% @tutors.each do |tutor| %>
-        <li><br><strong>Name:</strong> <%= tutor.name%>, <strong>Email:</strong> <%= tutor.email %>, <strong>Phone:</strong> <%= tutor.phone_number %></li>
+        <li>
+          <br><strong>Name:</strong> <%= tutor.name%>, <strong>Email:</strong> <%= tutor.email %>, <strong>Phone:</strong> <%= tutor.phone_number %> <strong>Hometown:</strong> <%= tutor.tutor_profile.hometown %> <strong>Tutor's School:</strong> <%= tutor.tutor_profile.tutors_school %> <strong>Tutor's Course:</strong> <%= tutor.tutor_profile.tutors_course %>
+        </li>
     <% end %>
     </ul>
 

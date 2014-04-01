@@ -4,6 +4,7 @@ class StudentsController < ApplicationController
 
   def index
     @students = Student.all
+
   end
 
   def new
@@ -11,7 +12,15 @@ class StudentsController < ApplicationController
   end
 
   def create
+    binding.pry
+
+
     @student = Student.new(student_params)
+    @profile = StudentProfile.new(student_params)
+
+    @student.student_profile = @profile
+
+
     if @student.save
       redirect_to("/")
     else
