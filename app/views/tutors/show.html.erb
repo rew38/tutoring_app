@@ -1,12 +1,26 @@
 <!-- tutors.show.html.erb -->
 
-<h1>Your Tutor Profile</h1>
-<%= link_to "Back", tutors_path %>
-<br>
 
-<p>
-  Name : <%= current_tutor.name %> <br>
-  Email : <%= current_tutor.email %> <br>
-  Phone : <%= current_tutor.phone_number %> <br>
-  Type : <%= current_tutor.type %> <br>
-</p>
+<% if tutor_logged_in? %>
+  <h1>Your Tutor Profile</h1>
+  <%= link_to "Back", tutors_path %>
+  <br>
+
+
+
+<% elsif student_logged_in?%>
+
+<h1>You've selected: </h1>
+  <%= link_to "Back", students_path %>
+  <br>
+
+
+<% end %>
+
+
+  <p>
+    Name : <%= @tutor.name %> <br>
+    Email : <%= @tutor.email %> <br>
+    Phone : <%= @tutor.phone_number %> <br>
+    Type : <%= @tutor.type %> <br>
+  </p>

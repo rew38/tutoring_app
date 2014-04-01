@@ -7,18 +7,14 @@ class StudentsController < ApplicationController
 
   end
 
-  def new
-    @student = Student.new
-  end
+ def new
+   @student = Student.new
+   @student.build_student_profile
+ end
+
 
   def create
-    binding.pry
-
-
     @student = Student.new(student_params)
-    @profile = StudentProfile.new(student_params)
-
-    @student.student_profile = @profile
 
 
     if @student.save
@@ -30,8 +26,8 @@ class StudentsController < ApplicationController
   end
 
   def edit
-    @student = Student.find(params[:id])
-    # Student.find_by(id: params[:id])
+    @student = Student.includes(:student_profile).find(params[:id])
+    @student.build_student_profile unless @student.student_profile # build a new profile, if there is no current student profile
   end
 
   def update
@@ -60,7 +56,7 @@ end
   private
 
   def student_params
-    params[:student].permit(:name, :email, :phone_number, :password, :password_confirmation, :student_profile_attributes => [:students_school, :class_of])
+    params.require(:student).permit(:name, :email, :phone_number, :password, :password_confirmation, :student_profile_attributes => [:students_school, :class_of])
   end
 
 end

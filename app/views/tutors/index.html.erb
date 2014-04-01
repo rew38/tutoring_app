@@ -13,6 +13,19 @@
 <br>
       <%= link_to "Delete my Account", tutor_path(current_tutor), method: :delete, confirm: "Are you sure?" %>
 
+<% elsif student_logged_in?%>
+    <%= link_to "back", students_path %>
+
+  <h2>Student: <%= current_student.name.capitalize %> <br> currently logged in</h2>
+    <ul>
+    <% @tutors.each do |tutor| %>
+        <li>
+          <br><strong>Name:</strong> <%= tutor.name%>, <strong>Email:</strong> <%= tutor.email %>, <strong>Phone:</strong> <%= tutor.phone_number %> <strong>Hometown:</strong> <%= tutor.tutor_profile.hometown %> <strong>Tutor's School:</strong> <%= tutor.tutor_profile.tutors_school %> <strong>Tutor's Course:</strong> <%= tutor.tutor_profile.tutors_course %>
+
+            <%= link_to "Select Tutor", tutor_path(tutor) %>
+        </li>
+    <% end %>
+
 
   <% else %>
     <%= link_to "Home", root_path %>

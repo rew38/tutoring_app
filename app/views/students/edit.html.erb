@@ -11,7 +11,7 @@
   <%= f.text_field(:email) %>
   <%= f.label(:phone_number) %>
   <%= f.text_field(:phone_number) %>
-  <%= f.fields_for :student_profile, @student.build_student_profile do |s| %>
+  <%= f.fields_for :student_profile, @student.student_profile do |s| %>
     <%= s.label :students_school%>
     <%= s.text_field (:students_school) %>
     <%= s.label :class_of %>

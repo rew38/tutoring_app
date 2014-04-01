@@ -6,6 +6,7 @@ class TutorsController < ApplicationController
 
   def new
     @tutor = Tutor.new
+    @tutor.build_tutor_profile
   end
 
   def create
@@ -19,15 +20,15 @@ class TutorsController < ApplicationController
   end
 
   def edit
-    @tutor = Tutor.find(params[:id])
-    # Tutor.find_by(id: params[:id])
+    @tutor = Tutor.includes(:tutor_profile).find(params[:id])
+    @tutor.build_tutor_profile unless @tutor.tutor_profile
   end
 
   def update
     @tutor = Tutor.find(params[:id])
 
     if @tutor.update(tutor_params)
-      redirect_to tutor_path(@tutor)
+      redirect_to tutor_path
     else
       render :edit
     end
@@ -49,7 +50,7 @@ class TutorsController < ApplicationController
   private
 
   def tutor_params
-    params[:tutor].permit(:name, :email, :phone_number, :password, :password_confirmation, :tutor_profile_attributes => [:hometown, :tutors_school, :tutors_course])
+    params.require(:tutor).permit(:name, :email, :phone_number, :password, :password_confirmation, :tutor_profile_attributes => [:hometown, :tutors_school, :tutors_course])
   end
 
 end
