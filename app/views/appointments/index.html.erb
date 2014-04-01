@@ -1,0 +1,13 @@
+<!-- appointments.index.html.erb -->
+
+    <%= link_to "Home", root_path %>
+
+  <h2>All Created Appointments</h2>
+    <ul>
+      <% @appointments.each do |appointment| %>
+        <li><br><strong>Start Time:</strong> <%= appointment.start_time%>, <strong>End Time:</strong> <%= appointment.end_time %>, <strong>Tutor ID:</strong> <%= appointment.tutor_id %>  <strong>Student ID:</strong> <%= appointment.student_id %><strong>School:</strong> <%= appointment.location %>
+        </li>
+        <%= @tutor.name %>
+
+      <% end %>
+    </ul>
