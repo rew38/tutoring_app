@@ -18,17 +18,22 @@ class AppointmentsController < ApplicationController
   end
 
  def new
-    @tutors_appointments = Appointment.find_all_by_tutor_id(current_tutor.id.to_s)
 
+  if tutor_logged_in?
     @appointment = Appointment.new
     @tutors = Tutor.all
     @students = Student.all
 
+    @tutors_appointments = Appointment.find_all_by_tutor_id(current_tutor.id.to_s)
+  else
+    @appointment = Appointment.new
+    @tutors = Tutor.all
+    @students = Student.all
+  end
  end
 
 
   def create
-    binding.pry
     @appointment = Appointment.new(appointment_params)
 
     if @appointment.save
@@ -48,6 +53,8 @@ class AppointmentsController < ApplicationController
 
   def edit
         @appointment = Appointment.find(params[:id])
+        @tutors = Tutor.all
+        @students = Student.all
   end
 
   def update
