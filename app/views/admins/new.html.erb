@@ -1,0 +1,31 @@
+<!-- admins.new.html.erb
+ -->
+
+<h2>Admin </h2>
+<h4>Registration </h4>
+<%= link_to "Back", admins_path %>
+
+<br>
+<br>
+<%= form_for(@admin) do |f| %>
+  <%= f.label(:name) %>
+  <%= f.text_field(:name) %>
+  <%= f.label(:email) %>
+  <%= f.text_field(:email) %>
+
+  <%= f.label(:password) %>
+  <%= f.password_field(:password) %>
+  <%= f.label(:password_confirmation) %>
+  <%= f.password_field(:password_confirmation) %>
+  <%= f.submit %>
+<% end %>
+
+
+<br><br><br>
+
+    <ul>
+      <% @admins.each do |admin| %>
+        <li><br><strong>Name:</strong> <%= admin.name%>, <strong>Email:</strong> <%= admin.email %>
+</li>
+      <% end %>
+    </ul>

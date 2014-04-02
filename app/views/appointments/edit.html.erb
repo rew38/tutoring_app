@@ -5,15 +5,16 @@
 <% if student_logged_in?%>
 
 <%= link_to "Back", students_path %>
-<h3>Make an Appointment</h3>
+<h3>Edit your Appointment with <%= @appointment.tutor.name.capitalize %></h3>
 
   <%= form_for(@appointment) do |f| %>
     <%= f.label(:start_time) %>
     <%= f.text_field(:start_time) %>
     <%= f.label(:end_time) %>
     <%= f.text_field(:end_time) %>
-    <%= f.label(:tutor_id) %> ID
-    <%= f.text_field(:tutor_id) %>
+
+    <%= f.hidden_field(:tutor_id) %>
+
 
     <%= f.hidden_field(:student_id, :value => current_student.id) %>
 
@@ -46,7 +47,7 @@
 
 
 <% else %>
-  <%= link_to "Back", root_path %>
+  <%= link_to "Back", admins_path %>
 
   <h3>Edit an Appointment</h3>
 

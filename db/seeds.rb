@@ -35,4 +35,6 @@ profile = TutorProfile.create(hometown: "TBD", tutors_school: "GA", tutors_cours
 
 david.tutor_profile = profile
 
-appointment1 = Appointment.create(start_time: "4:30 PM", end_time: "6:00 PM", tutor_id: 5, student_id: 3, location: "The Factory")
+
+
+admin = Admin.create(name: "admin", email: "admin@admin.com", password: "admin", password_confirmation: "admin")

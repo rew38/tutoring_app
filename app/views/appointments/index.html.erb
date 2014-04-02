@@ -16,6 +16,7 @@
           <strong>Student's School:</strong> <%= appointment.student.student_profile.students_school.capitalize %>
 
         <br>
+          <%= link_to "Edit Appointment", edit_appointment_path(appointment) %>
           <%= link_to "View Appointment", appointment_path(appointment) %>
           <%= link_to "Cancel/Delete Appointment", appointment_path(appointment), method: :delete, confirm: "Are you sure?" %>
 
@@ -45,7 +46,7 @@
 
 <% else %>
 
-    <%= link_to "Home", root_path %>
+    <%= link_to "Admin Dash", admins_path %>
 
 <h2>All Created Appointments</h2>
   <!-- View from homepage -->

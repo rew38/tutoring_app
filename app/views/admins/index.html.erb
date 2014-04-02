@@ -1,0 +1,50 @@
+<!-- admin.index.html.erb -->
+
+
+<% if admin_logged_in? %>
+  <h1>Welcome <%= current_admin.name.capitalize %></h1>
+    <%= link_to "Home", root_path %>
+
+  <p>
+    <a href="/students/new"> Create a Student</a>
+  </p>
+
+  <p>
+    <a href="/tutors/new"> Create a Tutor</a>
+  </p>
+
+  <p>
+    <a href="/admins/new"> Create an Admin</a>
+  </p>
+
+
+  <p>
+    <a href="/students">See Students</a>
+  </p>
+
+  <p>
+    <a href="/tutors">See Tutors</a>
+  </p>
+
+
+
+  <p>
+    <a href="/appointments/new"> Make an Appointment</a>
+  </p>
+
+  <p>
+    <a href="/appointments"> View all Appointments</a>
+  </p>
+
+
+<% else %>
+  <%= link_to "Home", root_path %>
+
+    <ul>
+      <% @admins.each do |admin| %>
+        <li><br><strong>Name:</strong> <%= admin.name%>, <strong>Email:</strong> <%= admin.email %>
+</li>
+      <% end %>
+    </ul>
+
+<% end %>

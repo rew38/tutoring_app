@@ -19,8 +19,12 @@ only admin will be bale to view tutor,student, and appointments.  -->
   </p>
 
 
-<% else %>
+<% elsif admin_logged_in? %>
 
+    <a href="/admins">I'm a logged in Admin, take me to my dash.</a>
+
+
+<% else %>
  <p>
     <a href="/session/new">Login</a>
   </p>
@@ -32,27 +36,6 @@ only admin will be bale to view tutor,student, and appointments.  -->
   <p>
     <a href="/tutors/new"> Tutor Sign Up</a>
   </p>
-
-
-
-
-  <p>
-    <a href="/students">See Students</a>
-  </p>
-
-  <p>
-    <a href="/tutors">See Tutors</a>
-  </p>
-
-  <p>
-    <a href="/appointments/new"> Make an Appointment</a>
-  </p>
-
-  <p>
-    <a href="/appointments"> View Appointments Index</a>
-  </p>
-
-
 
 <% end %>
 

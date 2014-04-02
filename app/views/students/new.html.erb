@@ -4,7 +4,12 @@
 
 <h2>Student </h2>
 <h4>Registration </h4>
-<%= link_to "Back", root_path %>
+
+<% if admin_logged_in? %>
+  <%= link_to "Admin Dash", admins_path %>
+  <% else %>
+  <%= link_to "Home", root_path %>
+<% end %>
 
 <br>
 <br>

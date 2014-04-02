@@ -50,7 +50,12 @@ def destroy
   @student = Student.find(params[:id])
   @student.destroy
   session[:user_id] = nil
-  redirect_to root_path
+
+  if admin_logged_in?
+    redirect_to admins_path
+    else
+      redirect_to root_path
+  end
 end
 
   private

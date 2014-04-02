@@ -2,6 +2,8 @@
 
 <!-- accessed from student dashboard, view profile -->
 
+<% if student_logged_in? %>
+
 <h1>Your Student Profile</h1>
 <%= link_to "Back", students_path %>
 <br>
@@ -17,4 +19,21 @@
   <strong>Class of :</strong> <%= current_student.student_profile.class_of %>
 </p>
 
+<% elsif admin_logged_in? %>
 
+  <h1>Selected Student Profile</h1>
+  <%= link_to "Back", students_path %>
+  <br>
+
+  <p>
+    Name : <%= @student.name %> <br>
+    Email : <%= @student.email %> <br>
+    Phone : <%= @student.phone_number %> <br>
+    Type : <%= @student.type %> <br>
+  <br>
+
+    Current School : <%= @student.student_profile.students_school %>
+    <strong>Class of :</strong> <%= @student.student_profile.class_of %>
+  </p>
+
+<% end %>

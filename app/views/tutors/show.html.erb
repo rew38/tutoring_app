@@ -16,10 +16,11 @@
   <%= link_to "Back", tutors_path %>
   <br>
 
+<% elsif admin_logged_in?%>
+
+<%= link_to "Back", tutors_path %>
 
 <% end %>
-
-
   <p>
     Name : <%= @tutor.name %> <br>
     Email : <%= @tutor.email %> <br>
@@ -30,3 +31,5 @@
     Tutor's School: <%= @tutor_profile.tutors_school %> <br>
     Tutor's Course: <%= @tutor_profile.tutors_course %> <br>
   </p>
+
+

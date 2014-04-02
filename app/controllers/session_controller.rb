@@ -12,6 +12,8 @@ class SessionController < ApplicationController
        redirect_to students_path
       elsif user.is_a?(Tutor)
         redirect_to tutors_path
+      elsif user.is_a?(Admin)
+        redirect_to admins_path
       else
         redirect_to "/"
       end

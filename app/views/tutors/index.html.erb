@@ -35,12 +35,18 @@
   <% else %>
 
   <!-- VIEW FROM THE HOMEPAGE WHEN NO ONE IS LOGGED IN. VIEW TUTORS LINK -->
-    <%= link_to "Home", root_path %>
+    <%= link_to "Admin Dash", admins_path %>
 
     <ul>
     <% @tutors.each do |tutor| %>
         <li>
           <br><strong>Name:</strong> <%= tutor.name%>, <strong>Email:</strong> <%= tutor.email %>, <strong>Phone:</strong> <%= tutor.phone_number %> <strong>Hometown:</strong> <%= tutor.tutor_profile.hometown %> <strong>Tutor's School:</strong> <%= tutor.tutor_profile.tutors_school %> <strong>Tutor's Course:</strong> <%= tutor.tutor_profile.tutors_course %>
+
+          <%= link_to "Select Tutor", tutor_path(tutor) %>
+
+          <%= link_to "Edit Tutor", edit_tutor_path(tutor) %>
+
+          <%= link_to "Delete Tutor", tutor_path(tutor), method: :delete, confirm: "Are you sure?" %>
         </li>
     <% end %>
     </ul>

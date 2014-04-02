@@ -43,7 +43,11 @@ class TutorsController < ApplicationController
     @tutor = Tutor.find(params[:id])
     @tutor.destroy
     session[:user_id] = nil
-    redirect_to root_path
+  if admin_logged_in?
+    redirect_to admins_path
+    else
+      redirect_to root_path
+  end
   end
 
 

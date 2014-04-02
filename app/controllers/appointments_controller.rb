@@ -2,11 +2,18 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = Appointment.all
+    @tutors = Tutor.all
+    @students = Student.all
 
-  if student_logged_in?
-    @students_appointments = Appointment.find_all_by_student_id(current_student.id.to_s)
-    elsif tutor_logged_in?
-    @tutors_appointments = Appointment.find_all_by_tutor_id(current_tutor.id.to_s)
+    if student_logged_in?
+      @students_appointments = Appointment.find_all_by_student_id(current_student.id.to_s)
+      elsif tutor_logged_in?
+      @tutors_appointments = Appointment.find_all_by_tutor_id(current_tutor.id.to_s)
+      elsif admin_logged_in?
+      @appointments = Appointment.all
+      @tutors = Tutor.all
+      @students = Student.all
+    end
   end
     # @tutors = Tutor.all
     # @students = Student.all
@@ -15,7 +22,7 @@ class AppointmentsController < ApplicationController
 
     #  @tutor = Tutor.find(@appointment[:tutor_id])
     # @student = Student.find(@appointment[:student_id])
-  end
+
 
  def new
 
@@ -42,7 +49,7 @@ class AppointmentsController < ApplicationController
       elsif tutor_logged_in?
         redirect_to("/tutors")
       else
-        redirect_to("/")
+        redirect_to("/admins")
       end
     else
       # render the new.html.erb file with @user
@@ -66,7 +73,7 @@ class AppointmentsController < ApplicationController
       elsif tutor_logged_in?
         redirect_to("/tutors")
       else
-        redirect_to("/")
+        redirect_to("/admins")
       end
     else
       render :edit
