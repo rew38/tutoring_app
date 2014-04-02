@@ -1,2 +1,29 @@
 <!-- appointments.show.html.erb
  -->
+<!-- NEEDS WORK -->
+
+
+<% if student_logged_in?%>
+    <br><%= link_to "Student Home", students_path %>
+     <br> <%= link_to "Back to All Appointments", appointments_path %>
+
+
+<% elsif tutor_logged_in?%>
+    <br><%= link_to "Tutor Home", tutors_path %>
+     <br> <%= link_to "Back to All Appointments", appointments_path %>
+
+
+<% else %>
+  <%= link_to "Home", root_path %>
+
+<% end %>
+
+
+  <h2>Appointments Details</h2>
+
+    <p>
+    Start Time : <%= @appointment.start_time %> <br>
+    End Time : <%= @appointment.end_time %> <br>
+    Location : <%= @appointment.location %> <br>
+
+  </p>

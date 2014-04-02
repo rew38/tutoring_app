@@ -9,16 +9,25 @@
 <br>
 <br>
 
-    <%= link_to "View Tutors", tutors_path %>
+    <%= link_to "View Tutors", tutors_path %><br>
+
 <br>
+    <a href="/appointments/new"> Make an Appointment</a><br>
+
+
+    <%= link_to "View Appointments", appointments_path(current_student) %>
+<!-- I'm going to want this to be a specific students route -->
+
+<br><br>
     <%= link_to "Edit Student Profile", edit_student_path(current_student) %>
 <br>
       <%= link_to "View Student Profile", student_path(current_student) %>
-<br>
+<br><br><br>
       <%= link_to "Delete my Account", student_path(current_student), method: :delete, confirm: "Are you sure?" %>
 
 
     <% else %>
+<!-- from home page, when see students is clicked -->
     <%= link_to "Home", root_path %>
 
     <ul>

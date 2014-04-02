@@ -1,38 +1,83 @@
 <!-- appointments.new.html.erb -->
 
-<%= link_to "Back", root_path %>
-<h3>Make an Appointment</h3>
+<% if student_logged_in?%>
 
-<%= form_for(@appointment) do |f| %>
-  <%= f.label(:start_time) %>
-  <%= f.text_field(:start_time) %>
-  <%= f.label(:end_time) %>
-  <%= f.text_field(:end_time) %>
-  <%= f.label(:tutor_id) %> ID
-  <%= f.text_field(:tutor_id) %>
-   <%= f.label(:student_id) %> ID
-  <%= f.text_field(:student_id) %>
-   <%= f.label(:location) %>
-  <%= f.text_field(:location) %>
-  <%= f.submit %>
-<% end %>
-
-<h4>List of all Students and Tutors IDs</h4>
-
-<h5>Students</h5>
-    <ul>
-      <% @students.each do |student| %>
-        <li>ID:  <%= student.id %>   <strong>Name:</strong> <%= student.name%>, <strong>Email:</strong> <%= student.email %>, <strong>Phone:</strong> <%= student.phone_number %>  <strong>Class of:</strong> <%= student.student_profile.class_of %> <strong>School:</strong> <%= student.student_profile.students_school %>
-</li>
-      <% end %>
-    </ul>
+  <%= form_for(@appointment) do |f| %>
+    <%= f.label(:start_time) %>
+    <%= f.text_field(:start_time) %>
+    <%= f.label(:end_time) %>
+    <%= f.text_field(:end_time) %>
+    <%= f.label(:tutor_id) %> ID
+    <%= f.text_field(:tutor_id) %>
 
 
 
-<h5>Tutors</h5>
+
+    <%= f.hidden_field(:student_id, :value => current_student.id) %>
+
+
+
+    <%= f.label(:location) %>
+    <%= f.text_field(:location) %>
+    <%= f.submit %>
+  <% end %>
+
+
+<h5> Available Tutors</h5>
 
 <% @tutors.each do |tutor| %>
         <ul>
           <br>ID:  <%= tutor.id %>   <strong>Name:</strong> <%= tutor.name%>, <strong>Email:</strong> <%= tutor.email %>, <strong>Phone:</strong> <%= tutor.phone_number %> <strong>Hometown:</strong> <%= tutor.tutor_profile.hometown %> <strong>Tutor's School:</strong> <%= tutor.tutor_profile.tutors_school %> <strong>Tutor's Course:</strong> <%= tutor.tutor_profile.tutors_course %>
         </ul>
     <% end %>
+
+<% else %>
+  <%= link_to "Back", root_path %>
+
+  <h3>Make an Appointment</h3>
+
+  <%= form_for(@appointment) do |f| %>
+    <%= f.label(:start_time) %>
+    <%= f.text_field(:start_time) %>
+    <%= f.label(:end_time) %>
+    <%= f.text_field(:end_time) %>
+    <%= f.label(:tutor_id) %> ID
+    <%= f.text_field(:tutor_id) %>
+     <%= f.label(:student_id) %> ID
+    <%= f.text_field(:student_id) %>
+     <%= f.label(:location) %>
+    <%= f.text_field(:location) %>
+    <%= f.submit %>
+  <% end %>
+
+  <h4>List of all Students and Tutors IDs</h4>
+
+  <h5>Students</h5>
+      <ul>
+        <% @students.each do |student| %>
+          <li>ID:  <%= student.id %>   <strong>Name:</strong> <%= student.name%>, <strong>Email:</strong> <%= student.email %>, <strong>Phone:</strong> <%= student.phone_number %>  <strong>Class of:</strong> <%= student.student_profile.class_of %> <strong>School:</strong> <%= student.student_profile.students_school %>
+  </li>
+        <% end %>
+      </ul>
+
+
+
+  <h5> Available Tutors</h5>
+
+  <% @tutors.each do |tutor| %>
+          <ul>
+            <br>ID:  <%= tutor.id %>   <strong>Name:</strong> <%= tutor.name%>, <strong>Email:</strong> <%= tutor.email %>, <strong>Phone:</strong> <%= tutor.phone_number %> <strong>Hometown:</strong> <%= tutor.tutor_profile.hometown %> <strong>Tutor's School:</strong> <%= tutor.tutor_profile.tutors_school %> <strong>Tutor's Course:</strong> <%= tutor.tutor_profile.tutors_course %>
+          </ul>
+      <% end %>
+
+
+
+
+<% end %>
+
+
+
+
+
+
+

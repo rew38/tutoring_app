@@ -2,8 +2,19 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = Appointment.all
-    @tutor = Tutor.find(params[:appointment][:tutor_id])
-    @student = Student.find(params[:appointment][:student_id])
+
+  if student_logged_in?
+    @students_appointments = Appointment.find_all_by_student_id(current_student.id.to_s)
+    elsif tutor_logged_in?
+    @tutors_appointments = Appointment.find_all_by_tutor_id(current_tutor.id.to_s)
+  end
+    # @tutors = Tutor.all
+    # @students = Student.all
+
+    # @appointment = Appointment.find(@appointments[:id])
+
+    #  @tutor = Tutor.find(@appointment[:tutor_id])
+    # @student = Student.find(@appointment[:student_id])
   end
 
  def new
@@ -15,10 +26,17 @@ class AppointmentsController < ApplicationController
 
 
   def create
+    binding.pry
     @appointment = Appointment.new(appointment_params)
 
     if @appointment.save
-      redirect_to("/")
+      if student_logged_in?
+        redirect_to("/students")
+      elsif tutor_logged_in?
+        redirect_to("/tutors")
+      else
+        redirect_to("/")
+      end
     else
       # render the new.html.erb file with @user
       render :new
@@ -42,8 +60,8 @@ class AppointmentsController < ApplicationController
 
   def show
     @appointment = Appointment.find(params[:id])
-    @tutor = Tutor.find(params[:tutor_id])
-    @student = Student.find(params[:student_id])
+    # @tutor = Tutor.find(@appointment[:tutor_id])
+    # @student = Student.find(@appointment[:student_id])
   end
 
   def destroy

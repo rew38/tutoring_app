@@ -1,13 +1,69 @@
 <!-- appointments.index.html.erb -->
 
-    <%= link_to "Home", root_path %>
+<% if student_logged_in? %>
+    <%= link_to "Back to Student Dash", students_path %>
 
-  <h2>All Created Appointments</h2>
-    <ul>
-      <% @appointments.each do |appointment| %>
-        <li><br><strong>Start Time:</strong> <%= appointment.start_time%>, <strong>End Time:</strong> <%= appointment.end_time %>, <strong>Tutor ID:</strong> <%= appointment.tutor_id %>  <strong>Student ID:</strong> <%= appointment.student_id %><strong>School:</strong> <%= appointment.location %>
+  <h3>Your Appointments</h3>
+
+  <h3>Hey <%=current_student.name.capitlize %>, these are your Appointments</h3>
+
+      <ul>
+      <% @students_appointments.each do |appointment| %>
+        <li><br><strong>Start Time:</strong> <%= appointment.start_time%>, <strong>End Time:</strong> <%= appointment.end_time %>, <strong>Location:</strong> <%= appointment.location %>
+          <strong>Tutor's Name:</strong> <%= appointment.tutor.name.capitalize %>
+          <strong>Student's Name:</strong> <%= appointment.student.name.capitalize %>,
+          <strong>Tutor's Course:</strong> <%= appointment.tutor.tutor_profile.tutors_course.capitalize %>
+          <strong>Student's School:</strong> <%= appointment.student.student_profile.students_school.capitalize %>
+
+        <br>
+          <%= link_to "Select Appointment", appointment_path(appointment) %>
+
         </li>
-        <%= @tutor.name %>
-
       <% end %>
     </ul>
+
+<% elsif tutor_logged_in? %>
+
+  <h3>Hey <%=current_tutor.name.capitlize %>, these are your Appointments</h3>
+      <ul>
+      <% @tutors_appointments.each do |appointment| %>
+        <li><br><strong>Start Time:</strong> <%= appointment.start_time%>, <strong>End Time:</strong> <%= appointment.end_time %>, <strong>Location:</strong> <%= appointment.location %>
+          <strong>Tutor's Name:</strong> <%= appointment.tutor.name.capitalize %>
+          <strong>Student's Name:</strong> <%= appointment.student.name.capitalize %>,
+          <strong>Tutor's Course:</strong> <%= appointment.tutor.tutor_profile.tutors_course.capitalize %>
+          <strong>Student's School:</strong> <%= appointment.student.student_profile.students_school.capitalize %>
+
+        <br>
+          <%= link_to "Select Appointment", appointment_path(appointment) %>
+
+        </li>
+      <% end %>
+    </ul>
+
+<% else %>
+
+    <%= link_to "Home", root_path %>
+
+<h2>All Created Appointments</h2>
+  <!-- View from homepage -->
+    <ul>
+      <% @appointments.each do |appointment| %>
+        <li><br><strong>Start Time:</strong> <%= appointment.start_time%>, <strong>End Time:</strong> <%= appointment.end_time %>, <strong>Location:</strong> <%= appointment.location %>
+          <strong>Tutor's Name:</strong> <%= appointment.tutor.name.capitalize %>
+          <strong>Student's Name:</strong> <%= appointment.student.name.capitalize %>,
+          <strong>Tutor's Course:</strong> <%= appointment.tutor.tutor_profile.tutors_course.capitalize %>
+          <strong>Student's School:</strong> <%= appointment.student.student_profile.students_school.capitalize %>
+
+        <br>
+          <%= link_to "Select Appointment", appointment_path(appointment) %>
+
+        </li>
+      <% end %>
+    </ul>
+
+
+<% end %>
+
+
+
+

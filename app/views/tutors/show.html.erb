@@ -2,6 +2,8 @@
 
 
 <% if tutor_logged_in? %>
+<!-- TUTOR VIEW OF A TUTORS INDIVIDUAL PROFILE -->
+
   <h1>Your Tutor Profile</h1>
   <%= link_to "Back", tutors_path %>
   <br>
@@ -9,9 +11,9 @@
 
 
 <% elsif student_logged_in?%>
-
-<h1>You've selected: </h1>
-  <%= link_to "Back", students_path %>
+<!-- STUDENT VIEW OF A TUTORS INDIVIDUAL PROFILE -->
+<h1>You've selected: <%= @tutor.name.capitalize %> </h1>
+  <%= link_to "Back", tutors_path %>
   <br>
 
 
@@ -22,5 +24,9 @@
     Name : <%= @tutor.name %> <br>
     Email : <%= @tutor.email %> <br>
     Phone : <%= @tutor.phone_number %> <br>
-    Type : <%= @tutor.type %> <br>
+
+    Hometown : <%= @tutor_profile.hometown %> <br>
+<br>
+    Tutor's School: <%= @tutor_profile.tutors_school %> <br>
+    Tutor's Course: <%= @tutor_profile.tutors_course %> <br>
   </p>

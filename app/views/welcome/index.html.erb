@@ -1,8 +1,27 @@
 <!-- welcome.index.html.erb -->
+<!-- This is the landing page eventually create an admin.
+only admin will be bale to view tutor,student, and appointments.  -->
 
 <h1>Tutoring App</h1>
 
+<% if student_logged_in?%>
+
+  <h2>Website Homepage</h2>
   <p>
+    <a href="/students">I'm a logged in Student, take me to my dash.</a>
+  </p>
+
+<% elsif tutor_logged_in?%>
+
+ <h2>Website Homepage</h2>
+  <p>
+    <a href="/tutors">I'm a logged in Tutor, take me to my dash.</a>
+  </p>
+
+
+<% else %>
+
+ <p>
     <a href="/session/new">Login</a>
   </p>
 
@@ -13,6 +32,9 @@
   <p>
     <a href="/tutors/new"> Tutor Sign Up</a>
   </p>
+
+
+
 
   <p>
     <a href="/students">See Students</a>
@@ -27,13 +49,12 @@
   </p>
 
   <p>
-    <a href="/appointments"> View Appointments</a>
+    <a href="/appointments"> View Appointments Index</a>
   </p>
 
+  <p>
+    <a href="/appointments/show"> View Appointments Show</a>
+  </p>
 
-
-
-
-
-
+<% end %>
 
