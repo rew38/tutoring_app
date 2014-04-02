@@ -3,12 +3,14 @@
 
 <% if tutor_logged_in? %>
 <!-- VIEW OF TUTORS DASHBOARD -->
-  <h1>Welcome <%= current_tutor.name %></h1>
+  <h1>Welcome <%= current_tutor.name.capitalize %></h1>
     <%= link_to "Home", root_path %>
 <br>
 <br>
-    <%= link_to "View Your Tutoring Appointments", appointments_path(current_tutor) %>
+ <a href="/appointments/new"> Make an Appointment</a><br>
 <br>
+    <%= link_to "View Your Tutoring Appointments", appointments_path(current_tutor) %>
+<br><br>
     <%= link_to "Edit Tutor Profile", edit_tutor_path(current_tutor) %>
 <br>
       <%= link_to "View Tutor Profile", tutor_path(current_tutor) %>

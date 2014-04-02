@@ -4,8 +4,8 @@
     <%= link_to "Back to Student Dash", students_path %>
 
   <h3>Your Appointments</h3>
-
-  <h3>Hey <%=current_student.name.capitlize %>, these are your Appointments</h3>
+<%= link_to "Back", students_path %>
+  <h3>Hey <%=current_student.name.capitalize %>, these are your Appointments</h3>
 
       <ul>
       <% @students_appointments.each do |appointment| %>
@@ -16,15 +16,16 @@
           <strong>Student's School:</strong> <%= appointment.student.student_profile.students_school.capitalize %>
 
         <br>
-          <%= link_to "Select Appointment", appointment_path(appointment) %>
+          <%= link_to "View Appointment", appointment_path(appointment) %>
+          <%= link_to "Cancel/Delete Appointment", appointment_path(appointment), method: :delete, confirm: "Are you sure?" %>
 
         </li>
       <% end %>
     </ul>
 
 <% elsif tutor_logged_in? %>
-
-  <h3>Hey <%=current_tutor.name.capitlize %>, these are your Appointments</h3>
+  <%= link_to "Back", tutors_path %>
+  <h3>Hey <%=current_tutor.name.capitalize %>, these are your Appointments</h3>
       <ul>
       <% @tutors_appointments.each do |appointment| %>
         <li><br><strong>Start Time:</strong> <%= appointment.start_time%>, <strong>End Time:</strong> <%= appointment.end_time %>, <strong>Location:</strong> <%= appointment.location %>
@@ -34,7 +35,9 @@
           <strong>Student's School:</strong> <%= appointment.student.student_profile.students_school.capitalize %>
 
         <br>
-          <%= link_to "Select Appointment", appointment_path(appointment) %>
+          <%= link_to "Edit Appointment", edit_appointment_path(appointment) %>
+          <%= link_to "View Appointment", appointment_path(appointment) %>
+          <%= link_to "Cancel/Delete Appointment", appointment_path(appointment), method: :delete, confirm: "Are you sure?" %>
 
         </li>
       <% end %>
@@ -56,6 +59,8 @@
 
         <br>
           <%= link_to "Select Appointment", appointment_path(appointment) %>
+
+          <%= link_to "Delete Appointment", appointment_path(appointment), method: :delete, confirm: "Are you sure?" %>
 
         </li>
       <% end %>

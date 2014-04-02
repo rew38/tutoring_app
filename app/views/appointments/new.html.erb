@@ -2,6 +2,9 @@
 
 <% if student_logged_in?%>
 
+<%= link_to "Back", students_path %>
+<h3>Make an Appointment</h3>
+
   <%= form_for(@appointment) do |f| %>
     <%= f.label(:start_time) %>
     <%= f.text_field(:start_time) %>
@@ -30,6 +33,38 @@
           <br>ID:  <%= tutor.id %>   <strong>Name:</strong> <%= tutor.name%>, <strong>Email:</strong> <%= tutor.email %>, <strong>Phone:</strong> <%= tutor.phone_number %> <strong>Hometown:</strong> <%= tutor.tutor_profile.hometown %> <strong>Tutor's School:</strong> <%= tutor.tutor_profile.tutors_school %> <strong>Tutor's Course:</strong> <%= tutor.tutor_profile.tutors_course %>
         </ul>
     <% end %>
+
+<% elsif tutor_logged_in?%>
+
+<%= link_to "Back", tutors_path %>
+<h3>Make an Appointment</h3>
+
+  <%= form_for(@appointment) do |f| %>
+    <%= f.label(:start_time) %>
+    <%= f.text_field(:start_time) %>
+    <%= f.label(:end_time) %>
+    <%= f.text_field(:end_time) %>
+    <%= f.label(:student_id) %> ID
+    <%= f.text_field(:student_id) %>
+
+
+    <%= f.hidden_field(:tutor_id, :value => current_tutor.id) %>
+
+    <%= f.label(:location) %>
+    <%= f.text_field(:location) %>
+    <%= f.submit %>
+  <% end %>
+
+
+  <h5>Your past Students</h5>
+      <ul>
+        <% @tutors_appointments.each do |appointment| %>
+          <li>ID:  <%= appointment.student.id %>   <strong>Name:</strong> <%= appointment.student.name%>, <strong>Email:</strong> <%= appointment.student.email %>, <strong>Phone:</strong> <%= appointment.student.phone_number %>  <strong>Class of:</strong> <%= appointment.student.student_profile.class_of %> <strong>School:</strong> <%= appointment.student.student_profile.students_school %>
+  </li>
+        <% end %>
+      </ul>
+
+
 
 <% else %>
   <%= link_to "Back", root_path %>

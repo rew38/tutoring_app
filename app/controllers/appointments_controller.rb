@@ -18,6 +18,8 @@ class AppointmentsController < ApplicationController
   end
 
  def new
+    @tutors_appointments = Appointment.find_all_by_tutor_id(current_tutor.id.to_s)
+
     @appointment = Appointment.new
     @tutors = Tutor.all
     @students = Student.all
@@ -45,14 +47,20 @@ class AppointmentsController < ApplicationController
 
 
   def edit
-
+        @appointment = Appointment.find(params[:id])
   end
 
   def update
     @appointment = Appointment.find(params[:id])
 
     if @appointment.update(appointment_params)
-      redirect_to appointments_path
+      if student_logged_in?
+        redirect_to("/students")
+      elsif tutor_logged_in?
+        redirect_to("/tutors")
+      else
+        redirect_to("/")
+      end
     else
       render :edit
     end
@@ -67,8 +75,13 @@ class AppointmentsController < ApplicationController
   def destroy
     @appointment = Appointment.find(params[:id])
     @appointment.destroy
-    session[:user_id] = nil
-    redirect_to root_path
+    if student_logged_in?
+        redirect_to("/students")
+      elsif tutor_logged_in?
+        redirect_to("/tutors")
+      else
+        redirect_to("/")
+      end
   end
 
   private
