@@ -1,5 +1,5 @@
-# My tutoring project
+# Tutoring App
 
-more to come
+Heroku Link: http://blueberry-pudding-9834.herokuapp.com/
 
-difference between just staged and what im working on
+Pivotal Tracker Link:  https://www.pivotaltracker.com/projects/1047484
