@@ -59,3 +59,6 @@ group :development, :test do
 # https://github.com/thoughtbot/shoulda-matchers
   gem 'shoulda-matchers'
 end
+
+gem 'rspec-core', '= 2.14.8'
+gem 'capybara'
